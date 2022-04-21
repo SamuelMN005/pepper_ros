@@ -1,5 +1,5 @@
 # Pepper ROS
-Alternative all-in-one repository for all Pepper ROS related packages. In this repository Pepper robot also works in a Gazebo simulation.
+Alternative all-in-one repository for all Pepper ROS related packages. In this repository Pepper robot also works in a Gazebo simulation. (currently only tested in simulation)
 
 ## Install
 First install the dependecies which require this setting via apt
