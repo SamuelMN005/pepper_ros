@@ -34,13 +34,13 @@
 	<xacro:macro name="insert_visu_Hip">
 		<visual>
 			<geometry>
-				<mesh filename="package://pepper_meshes/meshes/1.0/HipRoll.dae" scale="0.1 0.1 0.1"/>
+				<mesh filename="package://pepper_description/meshes/HipRoll.dae" scale="0.1 0.1 0.1"/>
 			</geometry>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 		</visual>
 		<collision>
 			<geometry>
-				<mesh filename="package://pepper_meshes/meshes/1.0/HipRoll_0.10.stl" scale="0.1 0.1 0.1"/>
+				<mesh filename="package://pepper_description/meshes/HipRoll_0.10.stl" scale="0.1 0.1 0.1"/>
 			</geometry>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 		</collision>
@@ -108,12 +108,12 @@
 			</geometry>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 		</visual>
-		<collision>
+<!-- 		<collision>
 			<geometry>
 				<mesh filename="package://pepper_meshes/meshes/1.0/WheelFL_0.10.stl" scale="0.1 0.1 0.1"/>
 			</geometry>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
-		</collision>
+		</collision> -->
 	</xacro:macro>
 	<xacro:macro name="insert_visu_LFinger21_link">
 		<visual>
@@ -250,9 +250,13 @@
 		</visual>
 		<collision>
 			<geometry>
-				<mesh filename="package://pepper_meshes/meshes/1.0/KneePitch_0.10.stl" scale="0.1 0.1 0.1"/>
-			</geometry>
-			<origin rpy="0 0 0" xyz="0 0 0"/>
+<!-- 				<mesh filename="package://pepper_meshes/meshes/1.0/KneePitch_0.10.stl" scale="0.1 0.1 0.1"/>
+ -->
+                <!-- We approximate the base with a box to ease the contacts with the ground so
+                plugins that move the base actually work -->
+ 				<box size="0.35 0.35 0.2"/>
+ 			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 ${-0.24}"/>
 		</collision>
 	</xacro:macro>
 	<xacro:macro name="insert_visu_Head">
@@ -458,12 +462,12 @@
 			</geometry>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 		</visual>
-		<collision>
+<!-- 		<collision>
 			<geometry>
 				<mesh filename="package://pepper_meshes/meshes/1.0/WheelB_0.10.stl" scale="0.1 0.1 0.1"/>
 			</geometry>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
-		</collision>
+		</collision> -->
 	</xacro:macro>
 	<xacro:macro name="insert_visu_LFinger23_link">
 		<visual>
@@ -538,13 +542,13 @@
 	<xacro:macro name="insert_visu_torso">
 		<visual>
 			<geometry>
-				<mesh filename="package://pepper_meshes/meshes/1.0/Torso.dae" scale="0.1 0.1 0.1"/>
+				<mesh filename="package://pepper_description/meshes/Torso.dae" scale="0.1 0.1 0.1"/>
 			</geometry>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 		</visual>
 		<collision>
 			<geometry>
-				<mesh filename="package://pepper_meshes/meshes/1.0/Torso_0.10.stl" scale="0.1 0.1 0.1"/>
+				<mesh filename="package://pepper_description/meshes/Torso_0.10.stl" scale="0.1 0.1 0.1"/>
 			</geometry>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 		</collision>
@@ -626,12 +630,12 @@
 			</geometry>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 		</visual>
-		<collision>
+<!-- 		<collision>
 			<geometry>
 				<mesh filename="package://pepper_meshes/meshes/1.0/WheelFR_0.10.stl" scale="0.1 0.1 0.1"/>
 			</geometry>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
-		</collision>
+		</collision> -->
 	</xacro:macro>
 	<xacro:macro name="insert_visu_LShoulder">
 		<visual>
@@ -650,13 +654,13 @@
 	<xacro:macro name="insert_visu_Pelvis">
 		<visual>
 			<geometry>
-				<mesh filename="package://pepper_meshes/meshes/1.0/HipPitch.dae" scale="0.1 0.1 0.1"/>
+				<mesh filename="package://pepper_description/meshes/HipPitch.dae" scale="0.1 0.1 0.1"/>
 			</geometry>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 		</visual>
 		<collision>
 			<geometry>
-				<mesh filename="package://pepper_meshes/meshes/1.0/HipPitch_0.10.stl" scale="0.1 0.1 0.1"/>
+				<mesh filename="package://pepper_description/meshes/HipPitch_0.10.stl" scale="0.1 0.1 0.1"/>
 			</geometry>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 		</collision>

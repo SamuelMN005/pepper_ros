@@ -2,15 +2,31 @@ cmake_minimum_required(VERSION 2.8.3)
 project(pepper_launch)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+if(gazebo_ros_link_attacher_FOUND)
+find_package(catkin REQUIRED
+  COMPONENTS 
+    roscpp
+    moveit_core
+    moveit_ros_planning
+    moveit_ros_planning_interface
+)
+else()
+find_package(catkin REQUIRED
+  COMPONENTS
+    roscpp
+    moveit_core
+    moveit_ros_planning
+    moveit_ros_planning_interface
+)
+endif()
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+find_package(Boost REQUIRED system filesystem date_time thread)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -101,7 +117,7 @@ find_package(catkin REQUIRED)
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES pepper_launch
-#  CATKIN_DEPENDS other_catkin_pkg
+  CATKIN_DEPENDS
 #  DEPENDS system_lib
 )
 
@@ -111,10 +127,9 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
-# include
-# ${catkin_INCLUDE_DIRS}
-)
+include_directories(SYSTEM ${Boost_INCLUDE_DIR})
+include_directories(${catkin_INCLUDE_DIRS})
+link_directories(${catkin_LIBRARY_DIRS})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -136,6 +151,14 @@ include_directories(
 ## target back to the shorter version for ease of user use
 ## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
 # set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
+#### script to demonstrate moveit with cpp script ####
+add_executable(pepper_moveit_demo src/pepper_moveit_demo.cpp)
+target_link_libraries(pepper_moveit_demo ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+add_dependencies(pepper_moveit_demo ${catkin_EXPORTED_TARGETS})
+#### script to position pepper to a home status ####
+add_executable(pepper_moveit_home src/pepper_moveit_home.cpp)
+target_link_libraries(pepper_moveit_home ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+add_dependencies(pepper_moveit_home ${catkin_EXPORTED_TARGETS})
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
