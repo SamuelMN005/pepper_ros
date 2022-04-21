@@ -27,4 +27,5 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/pepper/cmd_vel
 Thank you to the following people for developing and modifying the code for making it work correctly:
 
 https://github.com/awesomebytes
+
 https://github.com/sasilva1998
